@@ -1,0 +1,10 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Prévias</title>
+<script>
+// Link direto para uma tela de uma prévia: volta para o aplicativo dela (…/app/) levando a rota junto.
+(function (l) {
+  var s = l.pathname.split('/'), i = s.indexOf('app');
+  if (i < 0) return;
+  var base = s.slice(0, i + 1).join('/'), resto = s.slice(i + 1).join('/');
+  l.replace(l.origin + base + '/?/' + resto.replace(/&/g, '~and~') + (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') + l.hash);
+}(window.location));
+</script></head><body style="font:16px system-ui;padding:2rem">Página não encontrada.</body></html>

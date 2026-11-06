@@ -1,0 +1,1164 @@
+<!doctype html><html lang="pt-BR" data-feito="2026-11-06T19:42:59"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>Prévias · Fazenda · painel dos canais</title>
+<style>
+:root { --fundo:#f6f5f2; --papel:#fff; --tinta:#1c1b19; --suave:#5f5c55; --linha:#dedbd3; --destaque:#3a34c9; --sobre:#fff; }
+@media (prefers-color-scheme: dark) { :root { --fundo:#141413; --papel:#1e1d1b; --tinta:#eeece6; --suave:#a8a49a; --linha:#35332f; --destaque:#9d98ff; --sobre:#12110f; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--fundo); color:var(--tinta); font:16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif; }
+main { max-width:1180px; margin:0 auto; padding:24px 16px 80px; }
+h1 { font-size:clamp(1.6rem, 4vw, 2.3rem); line-height:1.15; margin:.2em 0 .3em; text-wrap:balance; }
+h2 { font-size:1.45rem; margin:2.4em 0 .5em; padding-top:.6em; border-top:1px solid var(--linha); }
+h3 { font-size:1.08rem; margin:1.4em 0 .4em; }
+a { color:var(--destaque); }
+.nota, figcaption { color:var(--suave); font-size:.9rem; }
+nav { position:sticky; top:0; z-index:2; background:var(--fundo); border-bottom:1px solid var(--linha); }
+nav div { max-width:1180px; margin:0 auto; padding:10px 16px; display:flex; gap:16px; overflow-x:auto; white-space:nowrap; font-size:.93rem; }
+.cartoes { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin:20px 0; }
+.cartao { background:var(--papel); border:1px solid var(--linha); border-radius:14px; padding:18px 20px; }
+.cartao h3 { margin:.1em 0 .4em; font-size:1.2rem; } .cartao p { margin:.5em 0; }
+.letra { font-weight:700; font-size:2rem; line-height:1; color:var(--destaque); margin:0; }
+.botao { display:inline-block; background:var(--destaque); color:var(--sobre); text-decoration:none; font-weight:600; padding:11px 18px; border-radius:10px; min-height:44px; }
+table { border-collapse:collapse; width:100%; margin:12px 0; background:var(--papel); font-size:.93rem; }
+th, td { border:1px solid var(--linha); padding:8px 10px; text-align:left; vertical-align:top; }
+.rolavel, .texto { overflow-x:auto; }
+.comp td { font-variant-numeric:tabular-nums; }
+.par { display:flex; gap:16px; align-items:flex-start; margin:16px 0 28px; overflow-x:auto; }
+figure { margin:0; flex:none; } figure.pc { width:min(100%, 820px); } figure.cel { width:260px; }
+figure img, figure video { width:100%; height:auto; display:block; border:1px solid var(--linha); border-radius:10px; background:var(--papel); }
+figcaption { padding:6px 2px; }
+details { background:var(--papel); border:1px solid var(--linha); border-radius:12px; padding:10px 16px; margin:12px 0; }
+summary { cursor:pointer; font-weight:600; min-height:32px; }
+blockquote { margin:12px 0; padding:8px 16px; border-left:3px solid var(--destaque); background:var(--papel); }
+code { font-size:.88em; background:var(--papel); padding:1px 4px; border-radius:4px; }
+@media (max-width:640px) { .par { flex-direction:column; } figure.pc { width:100%; } figure.cel { width:min(100%, 300px); } }
+</style></head><body>
+<nav><div><a href="#escolher">Escolher</a><a href="#comparacao">Comparação</a><a href="#versao-a">Versão A</a><a href="#versao-b">Versão B</a><a href="#versao-c">Versão C</a><a href="#hoje">Como está hoje</a><a href="#referencias">Referências</a></div></nav>
+<main>
+<p class="nota">Fazenda · painel dos canais · prévias de 06/11/2026 · protótipos com dados fictícios</p>
+<h1>Três versões para escolher</h1>
+<blockquote><h1>Pedido: menu do painel nas 5 etapas</h1>
+<p><strong>O que redesenhar:</strong> a navegação do painel inteiro: o menu lateral (no celular, o menu do topo), os nomes, o
+caminho entre as telas e a barra das 5 etapas (<code>EtapasFluxo.vue</code>, hoje só na tela Formatos).</p>
+<p><strong>Objetivo, nas palavras do dono:</strong> "se eu passasse isso pros meus amigos ou pra mim não entenderia nada do
+fluxo". "Pq existe moldes e formatos?" "Se é uma fila, não seria uma fila de vídeos que vai ser postado?"
+"Pauta de quê? Canais de quê? Tudo tá confuso." Ele quer o painel seguindo o fluxo dele: Nicho → Fórmula →
+Formato → Roteiro → Publicar.</p>
+<p><strong>Mapeamento de hoje para as etapas (proposta, pode ser contestada com evidência):</strong>
+- Nicho = Estudos (estudar um nicho)
+- Fórmula = relatório do estudo + a receita que hoje mora em Moldes (o nome "Moldes" some)
+- Formato = /formatos (pronto)
+- Roteiro = Pautas (ideias de vídeo) e a revisão de roteiro
+- Publicar = Fila (vídeos prontos para revisar e postar)
+- Canais = configuração, fora das etapas</p>
+<p><strong>Tarefas que a pessoa precisa conseguir sem ajuda:</strong>
+1. Começar um canal novo: escolher o nicho e chegar até escolher o formato.
+2. Saber em que etapa está e o que fazer em seguida.
+3. Achar os vídeos que estão para postar.
+4. Trocar entre os seus canais (cada amigo tem os seus).</p>
+<p><strong>Fora do escopo:</strong> o conteúdo de cada tela (reaproveitar o que existe), backend, voz, o motor de vídeo.</p></blockquote>
+<p>Cada versão abaixo é navegável: abra, clique e use como se fosse o sistema. Dá para escolher uma inteira ou
+pegar partes de cada uma (por exemplo, a lista da B com o formulário da C). Os problemas de hoje têm código
+(P1, E2…), e cada versão diz quais resolve.</p>
+<section id="escolher"><div class="cartoes"><article class="cartao"><p class="letra">A</p><h3>Conserto mínimo</h3><p>Mantém a entrada pela fila e a ordem atual do menu, corrigindo os nomes.
+Mostra as cinco etapas em todas as telas e mantém canal e nicho durante a navegação.
+Separa revisão de roteiro de vídeos para postar; Canais fica em Configuração.</p>
+<p><a href="http://127.0.0.1:13201/previas/a">Abrir versão A</a></p>
+<p><a class="botao" href="app/previas/a" target="_blank" rel="noopener">Abrir a versão A</a></p>
+<p><a href="#versao-a">Ver fotos, vídeo e detalhes</a></p></article><article class="cartao"><p class="letra">B</p><h3>Como o mercado faz</h3><p><a href="http://127.0.0.1:13201/previas/b">Abra a versão B</a>.</p>
+<p>O menu segue Nicho → Fórmula → Formato → Roteiro → Publicar, mantendo o canal escolhido entre telas.<br />
+Roteiros ficam separados dos vídeos para postar; Canais do YouTube fica em Configurações.<br />
+A estrutura adapta referências de vidIQ, TubeBuddy, Notion, Canva e YouTube Studio. As cinco etapas vêm do dono.</p>
+<p><a class="botao" href="app/previas/b" target="_blank" rel="noopener">Abrir a versão B</a></p>
+<p><a href="#versao-b">Ver fotos, vídeo e detalhes</a></p></article><article class="cartao"><p class="letra">C</p><h3>A mais simples</h3><p><a href="http://127.0.0.1:13201/previas/c">Abrir a versão C</a>.<br />
+Você começa escolhendo uma tarefa, com as cinco etapas sempre identificadas.<br />
+O canal acompanha a navegação; roteiros e vídeos para postar ficam separados.</p>
+<p><a class="botao" href="app/previas/c" target="_blank" rel="noopener">Abrir a versão C</a></p>
+<p><a href="#versao-c">Ver fotos, vídeo e detalhes</a></p></article></div></section>
+<details open><summary>Defeitos conhecidos nestas prévias</summary><pre style="white-space:pre-wrap">versão a:
+- 07-editar-receita (pc, rota /app/previas/a/formula/formula-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 10-preferencia-aberta (pc, rota /app/previas/a/formato/formato-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 13-aprovar-roteiro (pc, rota /app/previas/a/roteiro/video-exemplo-7): não abriu: page.click: Timeout 8000ms exceeded.
+- 16-aprovar-video (pc, rota /app/previas/a/publicar/video-exemplo-16): não abriu: page.click: Timeout 8000ms exceeded.
+- 19-editar-canal (pc, rota /app/previas/a/canais/canal-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 22-ideia-invalida (pc, rota /app/previas/a/roteiro): não abriu: page.click: Timeout 8000ms exceeded.
+- 07-editar-receita (celular, rota /app/previas/a/formula/formula-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 10-preferencia-aberta (celular, rota /app/previas/a/formato/formato-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 13-aprovar-roteiro (celular, rota /app/previas/a/roteiro/video-exemplo-7): não abriu: page.click: Timeout 8000ms exceeded.
+- 16-aprovar-video (celular, rota /app/previas/a/publicar/video-exemplo-16): não abriu: page.click: Timeout 8000ms exceeded.
+- 19-editar-canal (celular, rota /app/previas/a/canais/canal-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 22-ideia-invalida (celular, rota /app/previas/a/roteiro): não abriu: page.click: Timeout 8000ms exceeded.
+versão b:
+- 18-confirmacao (pc, rota /app/previas/b/publicar/video-exemplo-16): não abriu: page.click: Timeout 8000ms exceeded.
+- 19-validacao (pc, rota /app/previas/b/roteiro/novo): não abriu: page.click: Timeout 8000ms exceeded.
+- 20-cancelar (pc, rota /app/previas/b/formula/formula-exemplo-1?editar=1): não abriu: page.click: Timeout 8000ms exceeded.
+- 21-estudo-local (pc, rota /app/previas/b/nicho/novo): não abriu: page.fill: Timeout 8000ms exceeded.
+- 22-menu-editor (pc, rota /app/previas/b/formula/formula-exemplo-1?editar=1): não abriu: page.click: Timeout 8000ms exceeded.
+- 18-confirmacao (celular, rota /app/previas/b/publicar/video-exemplo-16): não abriu: page.click: Timeout 8000ms exceeded.
+- 19-validacao (celular, rota /app/previas/b/roteiro/novo): não abriu: page.click: Timeout 8000ms exceeded.
+- 20-cancelar (celular, rota /app/previas/b/formula/formula-exemplo-1?editar=1): não abriu: page.click: Timeout 8000ms exceeded.
+- 21-estudo-local (celular, rota /app/previas/b/nicho/novo): não abriu: page.fill: Timeout 8000ms exceeded.
+- 22-menu-editor (celular, rota /app/previas/b/formula/formula-exemplo-1?editar=1): não abriu: page.click: Timeout 8000ms exceeded.
+versão c:
+- 18-confirmacao (pc, rota /app/previas/c/formato/formato-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 19-publicacao (pc, rota /app/previas/c/publicar/video-exemplo-16): não abriu: page.click: Timeout 8000ms exceeded.
+- 20-validacao (pc, rota /app/previas/c/nicho/novo): não abriu: page.click: Timeout 8000ms exceeded.
+- 18-confirmacao (celular, rota /app/previas/c/formato/formato-exemplo-1): não abriu: page.click: Timeout 8000ms exceeded.
+- 19-publicacao (celular, rota /app/previas/c/publicar/video-exemplo-16): não abriu: page.click: Timeout 8000ms exceeded.
+- 20-validacao (celular, rota /app/previas/c/nicho/novo): não abriu: page.click: Timeout 8000ms exceeded.</pre></details>
+<section id="comparacao"><h2>Comparação com hoje</h2><div class="rolavel"><table class="comp"><tr><th></th><th>Hoje</th><th>Versão A</th><th>Versão B</th><th>Versão C</th></tr>
+<tr><th>Telas fotografadas</th><td>10</td><td>16</td><td>17</td><td>17</td></tr>
+<tr><th>Alturas de tela para rolar no celular (média por tela)</th><td>2,6</td><td>2,3</td><td>2,3</td><td>2,3</td></tr>
+<tr><th>Controles visíveis no celular (média por tela)</th><td>28</td><td>27</td><td>27</td><td>27</td></tr>
+<tr><th>Alvos de toque menores que 44 px no celular (total)</th><td>16</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><th>Telas com rolagem lateral no celular</th><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+</table><p class="nota">Números medidos no navegador, nas telas fotografadas. As versões têm telas diferentes das de hoje, então a comparação é por média, não tela a tela.</p></div></section>
+<section id="versao-a"><h2>Versão A · Conserto mínimo</h2><p class="nota">As mesmas telas de hoje, com o que está quebrado ou confuso consertado. Menor risco e menor esforço.</p>
+<div class="par"><figure class="pc"><video controls preload="none" src="video/a-pc.mp4"></video><figcaption>Passeio pela versão A · computador</figcaption></figure><figure class="cel"><video controls preload="none" src="video/a-celular.mp4"></video><figcaption>Passeio pela versão A · celular</figcaption></figure></div>
+<div class="texto"><h2>O que é a versão A</h2>
+<p>Mantém a entrada pela fila e a ordem atual do menu, corrigindo os nomes.
+Mostra as cinco etapas em todas as telas e mantém canal e nicho durante a navegação.
+Separa revisão de roteiro de vídeos para postar; Canais fica em Configuração.</p>
+<p><a href="http://127.0.0.1:13201/previas/a">Abrir versão A</a></p>
+<h2>Telas</h2>
+<p>Rotas abaixo de <code>/previas/a</code>. Edições e confirmações usam a mesma rota.</p>
+<table>
+<thead>
+<tr>
+<th>Tela</th>
+<th>Rota</th>
+<th>Problemas resolvidos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Início / vídeos para postar</td>
+<td><code>/publicar</code></td>
+<td>F1, F2</td>
+</tr>
+<tr>
+<td>Estudos e novo estudo</td>
+<td><code>/nicho</code>, <code>/nicho/novo</code></td>
+<td>E1, F2</td>
+</tr>
+<tr>
+<td>Relatório</td>
+<td><code>/nicho/estudo-exemplo-1</code></td>
+<td>E1, R1, R2, R3</td>
+</tr>
+<tr>
+<td>Fórmulas</td>
+<td><code>/formula</code></td>
+<td>M1, R3</td>
+</tr>
+<tr>
+<td>Receita e edição</td>
+<td><code>/formula/formula-exemplo-1</code></td>
+<td>D1, D2, M1</td>
+</tr>
+<tr>
+<td>Formatos</td>
+<td><code>/formato</code></td>
+<td>O4</td>
+</tr>
+<tr>
+<td>Formato e confirmação</td>
+<td><code>/formato/formato-exemplo-1</code></td>
+<td>O4; O1 explicado</td>
+</tr>
+<tr>
+<td>Ideias e validação</td>
+<td><code>/roteiro</code></td>
+<td>I1, F1</td>
+</tr>
+<tr>
+<td>Revisão do roteiro</td>
+<td><code>/roteiro/video-exemplo-7</code></td>
+<td>I1, V1, V2</td>
+</tr>
+<tr>
+<td>Revisão do vídeo</td>
+<td><code>/publicar/video-exemplo-16</code></td>
+<td>V1, V2</td>
+</tr>
+<tr>
+<td>Canais</td>
+<td><code>/canais</code></td>
+<td>N3, C1</td>
+</tr>
+<tr>
+<td>Canal e edição</td>
+<td><code>/canais/canal-exemplo-1</code></td>
+<td>H1, C1</td>
+</tr>
+<tr>
+<td>Vazio e erro</td>
+<td><code>?cenario=vazio</code>, <code>?cenario=erro</code></td>
+<td>F2</td>
+</tr>
+</tbody>
+</table>
+<p>Compartilhados: N2, N3, O2, O3 e C2. N1 fica parcial porque a ordem antiga foi preservada.</p>
+<h2>Tarefas: hoje × versão A</h2>
+<p>Contagem de links e botões, incluindo a tela inicial. Digitação, espera, rolagem e toques internos dos seletores ficam fora.</p>
+<table>
+<thead>
+<tr>
+<th>Tarefa</th>
+<th>Telas e toques hoje</th>
+<th>Telas e toques na versão A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Novo nicho até consultar formato</td>
+<td>4 telas / 4 ações, pulando a receita</td>
+<td>7 telas / 6 ações, passando pela receita</td>
+</tr>
+<tr>
+<td>Retomar estudo até formato</td>
+<td>4 telas / 4 ações</td>
+<td>6 telas / 5 ações, passando pela receita</td>
+</tr>
+<tr>
+<td>Reconhecer a etapa</td>
+<td>1 ação para encontrar a barra</td>
+<td>0: barra presente</td>
+</tr>
+<tr>
+<td>Abrir vídeo para postar</td>
+<td>2 ações de outra seção</td>
+<td>2 ações; revisão de texto separada</td>
+</tr>
+<tr>
+<td>Trocar canal</td>
+<td>1 seleção, restrita à área</td>
+<td>1 seleção, mantida entre áreas</td>
+</tr>
+</tbody>
+</table>
+<h2>Contras desta versão</h2>
+<ul>
+<li>O menu continua começando por Publicar e coloca Formato antes de Fórmula.</li>
+<li>O percurso completo exige mais ações.</li>
+<li>As listas continuam longas no celular.</li>
+<li><strong>O1 permanece:</strong> a preferência local não aplica o formato ao canal.</li>
+<li><strong>Esforço real: M</strong>, principalmente para preservar contexto e separar as revisões em várias telas.</li>
+</ul>
+<h2>O que inventei</h2>
+<p>Preferência de formato, criação de estudo e aprovações simuladas, somente em memória. Dados vêm da base compartilhada; entradas locais recebem <code>[exemplo]</code>.</p>
+<p>O formulário de estudo ganhou destino próprio. Relatório e configuração mostram apenas os dados disponíveis na base.</p>
+<h2>O que não fiz</h2>
+<p>Não implementei aplicação real de formatos, persistência, conexão ao YouTube, geração ou publicação. Não reproduzi todos os controles internos das telas atuais.</p>
+<p><strong>Conferência: 44/44 capturas com “ok”</strong>, sem sobra de largura, rede externa, erro de console ou alvo menor que 44 px. Inspecionei início, lista, detalhe e confirmação em computador e celular. TypeScript passou e exercitei os principais fluxos locais.</p>
+<p>Não fiz teste com pessoas, leitor de tela, contraste ou zoom. Não rodei build, instalação ou deploy.</p>
+<p><a href="/home/zezinho/previas/canal-dark-fazenda/menu-5-etapas/app/painel/src/telas/previas/a/RESUMO.md">Resumo completo e limitações</a></p></div>
+<h3>Telas (clique na foto para abrir a tela de verdade)</h3>
+<div class="par"><figure class="pc"><a href="app/previas/a" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-01-inicio.webp" alt="Publicar · computador"></a><figcaption>Publicar · computador</figcaption></figure><figure class="cel"><a href="app/previas/a" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-01-inicio.webp" alt="Publicar · celular"></a><figcaption>Publicar · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/nicho" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-02-nicho.webp" alt="Nicho · computador"></a><figcaption>Nicho · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/nicho" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-02-nicho.webp" alt="Nicho · celular"></a><figcaption>Nicho · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/nicho/estudo-exemplo-1?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-03-relatorio.webp" alt="Relatório do nicho · computador"></a><figcaption>Relatório do nicho · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/nicho/estudo-exemplo-1?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-03-relatorio.webp" alt="Relatório do nicho · celular"></a><figcaption>Relatório do nicho · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/nicho/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-04-novo-nicho.webp" alt="Estudar um nicho · computador"></a><figcaption>Estudar um nicho · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/nicho/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-04-novo-nicho.webp" alt="Estudar um nicho · celular"></a><figcaption>Estudar um nicho · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/formula" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-05-formulas.webp" alt="Fórmula · computador"></a><figcaption>Fórmula · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/formula" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-05-formulas.webp" alt="Fórmula · celular"></a><figcaption>Fórmula · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/formula/formula-exemplo-1?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-06-receita.webp" alt="Receita do roteiro · computador"></a><figcaption>Receita do roteiro · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/formula/formula-exemplo-1?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-06-receita.webp" alt="Receita do roteiro · celular"></a><figcaption>Receita do roteiro · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/formato?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-08-formatos.webp" alt="Formato · computador"></a><figcaption>Formato · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/formato?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-08-formatos.webp" alt="Formato · celular"></a><figcaption>Formato · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/formato/formato-exemplo-1?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-09-formato-detalhe.webp" alt="Detalhe do formato · computador"></a><figcaption>Detalhe do formato · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/formato/formato-exemplo-1?estudo=estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-09-formato-detalhe.webp" alt="Detalhe do formato · celular"></a><figcaption>Detalhe do formato · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/roteiro" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-11-roteiro.webp" alt="Ideias e roteiros · computador"></a><figcaption>Ideias e roteiros · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/roteiro" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-11-roteiro.webp" alt="Ideias e roteiros · celular"></a><figcaption>Ideias e roteiros · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/roteiro/video-exemplo-7" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-12-revisar-roteiro.webp" alt="Revisar roteiro · computador"></a><figcaption>Revisar roteiro · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/roteiro/video-exemplo-7" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-12-revisar-roteiro.webp" alt="Revisar roteiro · celular"></a><figcaption>Revisar roteiro · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/publicar" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-14-publicar.webp" alt="Vídeos para postar · computador"></a><figcaption>Vídeos para postar · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/publicar" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-14-publicar.webp" alt="Vídeos para postar · celular"></a><figcaption>Vídeos para postar · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/publicar/video-exemplo-16" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-15-revisar-video.webp" alt="Revisar vídeo · computador"></a><figcaption>Revisar vídeo · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/publicar/video-exemplo-16" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-15-revisar-video.webp" alt="Revisar vídeo · celular"></a><figcaption>Revisar vídeo · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/canais" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-17-canais.webp" alt="Canais do YouTube · computador"></a><figcaption>Canais do YouTube · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/canais" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-17-canais.webp" alt="Canais do YouTube · celular"></a><figcaption>Canais do YouTube · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a/canais/canal-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-18-canal.webp" alt="Configuração do canal · computador"></a><figcaption>Configuração do canal · computador</figcaption></figure><figure class="cel"><a href="app/previas/a/canais/canal-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-18-canal.webp" alt="Configuração do canal · celular"></a><figcaption>Configuração do canal · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a?cenario=vazio" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-20-vazio.webp" alt="Sem dados · computador"></a><figcaption>Sem dados · computador</figcaption></figure><figure class="cel"><a href="app/previas/a?cenario=vazio" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-20-vazio.webp" alt="Sem dados · celular"></a><figcaption>Sem dados · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/a?cenario=erro" target="_blank" rel="noopener"><img loading="lazy" src="img/a-pc-21-erro.webp" alt="Falha no carregamento · computador"></a><figcaption>Falha no carregamento · computador</figcaption></figure><figure class="cel"><a href="app/previas/a?cenario=erro" target="_blank" rel="noopener"><img loading="lazy" src="img/a-celular-21-erro.webp" alt="Falha no carregamento · celular"></a><figcaption>Falha no carregamento · celular · cortada</figcaption></figure></div></section><section id="versao-b"><h2>Versão B · Como o mercado faz</h2><p class="nota">Telas e fluxo reorganizados seguindo o que plataformas reais fazem, com a fonte de cada decisão.</p>
+<div class="par"><figure class="pc"><video controls preload="none" src="video/b-pc.mp4"></video><figcaption>Passeio pela versão B · computador</figcaption></figure><figure class="cel"><video controls preload="none" src="video/b-celular.mp4"></video><figcaption>Passeio pela versão B · celular</figcaption></figure></div>
+<div class="texto"><h2>O que é a versão B</h2>
+<p><a href="http://127.0.0.1:13201/previas/b">Abra a versão B</a>.</p>
+<p>O menu segue Nicho → Fórmula → Formato → Roteiro → Publicar, mantendo o canal escolhido entre telas.<br />
+Roteiros ficam separados dos vídeos para postar; Canais do YouTube fica em Configurações.<br />
+A estrutura adapta referências de vidIQ, TubeBuddy, Notion, Canva e YouTube Studio. As cinco etapas vêm do dono.</p>
+<h2>Telas</h2>
+<p>Prefixo das rotas: <code>/previas/b</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Tela</th>
+<th>Rota</th>
+<th>Problemas resolvidos (códigos)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Início</td>
+<td><code>/previas/b</code></td>
+<td>N1, N2, F2, C2</td>
+</tr>
+<tr>
+<td>Nichos e novo estudo</td>
+<td><code>/nicho</code>, <code>/nicho/novo</code></td>
+<td>E1, F2, O4</td>
+</tr>
+<tr>
+<td>Resultado do estudo</td>
+<td><code>/nicho/estudo-exemplo-1</code></td>
+<td>R1, R2, E1</td>
+</tr>
+<tr>
+<td>Fórmulas</td>
+<td><code>/formula</code></td>
+<td>R3, M1</td>
+</tr>
+<tr>
+<td>Fórmula e edição</td>
+<td><code>/formula/formula-exemplo-1</code>, <code>?editar=1</code></td>
+<td>D1, D2, M1</td>
+</tr>
+<tr>
+<td>Formatos</td>
+<td><code>/formato</code></td>
+<td>O2, O3, O4</td>
+</tr>
+<tr>
+<td>Formato e confirmação</td>
+<td><code>/formato/formato-exemplo-1</code></td>
+<td>O2, O3; O1 permanece</td>
+</tr>
+<tr>
+<td>Ideias e criação</td>
+<td><code>/roteiro</code>, <code>/roteiro/novo</code></td>
+<td>F1, I1</td>
+</tr>
+<tr>
+<td>Roteiro e edição</td>
+<td><code>/roteiro/video-exemplo-7</code>, <code>?editar=1</code></td>
+<td>I1, V1</td>
+</tr>
+<tr>
+<td>Vídeos para publicar</td>
+<td><code>/publicar</code></td>
+<td>F1, V1</td>
+</tr>
+<tr>
+<td>Vídeo e confirmação</td>
+<td><code>/publicar/video-exemplo-16</code></td>
+<td>V1, V2</td>
+</tr>
+<tr>
+<td>Canais e configuração</td>
+<td><code>/canais</code>, <code>/canais/canal-exemplo-1</code></td>
+<td>N3, C1, C2, H1</td>
+</tr>
+<tr>
+<td>Vazio e erro</td>
+<td><code>/nicho?cenario=vazio</code>, <code>/publicar?cenario=erro</code></td>
+<td>F2, N2</td>
+</tr>
+</tbody>
+</table>
+<p>Cada tela tem o painel recolhido “De onde veio este desenho”, com decisões, plataformas e links [L].</p>
+<h2>Tarefas: hoje × versão B</h2>
+<p>Contagem de links e botões, sem digitação ou rolagem. Os números de hoje vêm de PROBLEMAS.md.</p>
+<table>
+<thead>
+<tr>
+<th>Tarefa</th>
+<th>Telas e toques hoje</th>
+<th>Telas e toques na versão B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Começar e chegar ao formato</td>
+<td>4 telas / 4 ações; pula a receita</td>
+<td>6 telas / 5 ações até Formatos, passando por Fórmula. Escolha simulada acrescenta 1 tela e 3 ações</td>
+</tr>
+<tr>
+<td>Saber a etapa e continuar</td>
+<td>1 ação para encontrar a barra em Formatos</td>
+<td>0 ações para consultar; 1 para avançar</td>
+</tr>
+<tr>
+<td>Achar vídeo para postar</td>
+<td>2 ações: Fila → vídeo</td>
+<td>2 ações: Publicar → vídeo, com lista inicial “Para postar”</td>
+</tr>
+<tr>
+<td>Trocar de canal</td>
+<td>1 seleção local; contexto não compartilhado</td>
+<td>1 seleção global, preservada entre etapas</td>
+</tr>
+</tbody>
+</table>
+<h2>Contras desta versão</h2>
+<ul>
+<li>Mais passos até Formato para explicitar a passagem por Fórmula.</li>
+<li>Menu, seletor e barra ocupam bastante espaço no celular.</li>
+<li>Listas têm busca, sem paginação.</li>
+<li>Não houve teste de compreensão com amigos leigos.</li>
+<li>Esforço <strong>M</strong> para implementar a navegação real: separar revisões e preservar canal e estudo nas telas existentes. Aplicar formato exige trabalho funcional separado.</li>
+</ul>
+<h2>O que inventei</h2>
+<ul>
+<li>Início com atalhos e contagens calculadas pelas regras compartilhadas.</li>
+<li>Formulários e alterações locais, descartados ao recarregar.</li>
+<li>Confirmações simuladas de formato e publicação.</li>
+<li>Barra persistente por regra da Fazenda; a pesquisa não encontrou esse fluxo completo no mercado.</li>
+</ul>
+<p>Os dados iniciais são os mesmos da base compartilhada, todos fictícios.</p>
+<h2>O que não fiz</h2>
+<p>Não implementei backend, produção, aplicação real de formato ou publicação. Não reproduzi integralmente os editores e relatórios existentes. Não alterei outras versões nem dados compartilhados.</p>
+<p>Não rodei build, instalei dependências, subi servidor, fiz deploy ou operações de Git. Não li <code>.env</code>. Leitor de tela, contraste por ferramenta e permissões reais ficaram de fora.</p>
+<p><strong>Conferência:</strong> 44 capturas de 22 estados em computador e celular, sem sobra de largura, rede externa, erro de console ou alvos abaixo de 44 px. Fotos abertas e inspecionadas; percursos principais executados. A revisão independente confirmou a resolução das duas falhas encontradas.</p>
+<p>O resumo completo está em <code>painel/src/telas/previas/b/RESUMO.md</code>. A documentação auxiliar de estilos já estava desatualizada e foi preservada; sua atualização fica para uma tarefa separada.</p></div>
+<h3>Telas (clique na foto para abrir a tela de verdade)</h3>
+<div class="par"><figure class="pc"><a href="app/previas/b" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-01-inicio.webp" alt="Início · computador"></a><figcaption>Início · computador</figcaption></figure><figure class="cel"><a href="app/previas/b" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-01-inicio.webp" alt="Início · celular"></a><figcaption>Início · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/nicho" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-02-nichos.webp" alt="Pesquisar um nicho · computador"></a><figcaption>Pesquisar um nicho · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/nicho" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-02-nichos.webp" alt="Pesquisar um nicho · celular"></a><figcaption>Pesquisar um nicho · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/nicho/estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-03-estudo.webp" alt="Resultado do estudo · computador"></a><figcaption>Resultado do estudo · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/nicho/estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-03-estudo.webp" alt="Resultado do estudo · celular"></a><figcaption>Resultado do estudo · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/formula" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-04-formulas.webp" alt="Fórmulas · computador"></a><figcaption>Fórmulas · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/formula" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-04-formulas.webp" alt="Fórmulas · celular"></a><figcaption>Fórmulas · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/formula/formula-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-05-formula.webp" alt="Fórmula do canal · computador"></a><figcaption>Fórmula do canal · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/formula/formula-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-05-formula.webp" alt="Fórmula do canal · celular"></a><figcaption>Fórmula do canal · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/formato" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-06-formatos.webp" alt="Formatos · computador"></a><figcaption>Formatos · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/formato" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-06-formatos.webp" alt="Formatos · celular"></a><figcaption>Formatos · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/formato/formato-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-07-formato.webp" alt="Detalhe do formato · computador"></a><figcaption>Detalhe do formato · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/formato/formato-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-07-formato.webp" alt="Detalhe do formato · celular"></a><figcaption>Detalhe do formato · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/roteiro" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-08-roteiros.webp" alt="Ideias e roteiros · computador"></a><figcaption>Ideias e roteiros · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/roteiro" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-08-roteiros.webp" alt="Ideias e roteiros · celular"></a><figcaption>Ideias e roteiros · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/roteiro/video-exemplo-7" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-09-roteiro.webp" alt="Revisar roteiro · computador"></a><figcaption>Revisar roteiro · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/roteiro/video-exemplo-7" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-09-roteiro.webp" alt="Revisar roteiro · celular"></a><figcaption>Revisar roteiro · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/publicar" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-10-publicar.webp" alt="Vídeos para publicar · computador"></a><figcaption>Vídeos para publicar · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/publicar" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-10-publicar.webp" alt="Vídeos para publicar · celular"></a><figcaption>Vídeos para publicar · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/publicar/video-exemplo-16" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-11-video.webp" alt="Revisar vídeo · computador"></a><figcaption>Revisar vídeo · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/publicar/video-exemplo-16" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-11-video.webp" alt="Revisar vídeo · celular"></a><figcaption>Revisar vídeo · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/canais" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-12-canais.webp" alt="Canais do YouTube · computador"></a><figcaption>Canais do YouTube · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/canais" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-12-canais.webp" alt="Canais do YouTube · celular"></a><figcaption>Canais do YouTube · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/canais/canal-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-13-canal.webp" alt="Configurações do canal · computador"></a><figcaption>Configurações do canal · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/canais/canal-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-13-canal.webp" alt="Configurações do canal · celular"></a><figcaption>Configurações do canal · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/nicho/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-14-novo.webp" alt="Estudar um nicho · computador"></a><figcaption>Estudar um nicho · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/nicho/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-14-novo.webp" alt="Estudar um nicho · celular"></a><figcaption>Estudar um nicho · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/formula/formula-exemplo-1?editar=1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-15-editar.webp" alt="Editar fórmula · computador"></a><figcaption>Editar fórmula · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/formula/formula-exemplo-1?editar=1" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-15-editar.webp" alt="Editar fórmula · celular"></a><figcaption>Editar fórmula · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/nicho?cenario=vazio" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-16-vazio.webp" alt="Sem dados · computador"></a><figcaption>Sem dados · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/nicho?cenario=vazio" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-16-vazio.webp" alt="Sem dados · celular"></a><figcaption>Sem dados · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/b/publicar?cenario=erro" target="_blank" rel="noopener"><img loading="lazy" src="img/b-pc-17-erro.webp" alt="Falha ao carregar · computador"></a><figcaption>Falha ao carregar · computador</figcaption></figure><figure class="cel"><a href="app/previas/b/publicar?cenario=erro" target="_blank" rel="noopener"><img loading="lazy" src="img/b-celular-17-erro.webp" alt="Falha ao carregar · celular"></a><figcaption>Falha ao carregar · celular · cortada</figcaption></figure></div></section><section id="versao-c"><h2>Versão C · A mais simples</h2><p class="nota">Entra pela tarefa, uma decisão por tela, o bastidor escondido. Menos telas e menos toques.</p>
+<div class="par"><figure class="pc"><video controls preload="none" src="video/c-pc.mp4"></video><figcaption>Passeio pela versão C · computador</figcaption></figure><figure class="cel"><video controls preload="none" src="video/c-celular.mp4"></video><figcaption>Passeio pela versão C · celular</figcaption></figure></div>
+<div class="texto"><h2>O que é a versão C</h2>
+<p><a href="http://127.0.0.1:13201/previas/c">Abrir a versão C</a>.<br />
+Você começa escolhendo uma tarefa, com as cinco etapas sempre identificadas.<br />
+O canal acompanha a navegação; roteiros e vídeos para postar ficam separados.</p>
+<h2>Telas</h2>
+<table>
+<thead>
+<tr>
+<th>Tela</th>
+<th>Rota</th>
+<th>Problemas resolvidos (códigos)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Início por tarefa</td>
+<td><code>/previas/c</code></td>
+<td>N1, N3, F2</td>
+</tr>
+<tr>
+<td>Assuntos e criação</td>
+<td><code>/previas/c/nicho</code> e <code>/nicho/novo</code></td>
+<td>E1, R2, O4</td>
+</tr>
+<tr>
+<td>Detalhe do estudo</td>
+<td><code>/previas/c/nicho/estudo-exemplo-1</code></td>
+<td>R1, R2</td>
+</tr>
+<tr>
+<td>Fórmula e edição</td>
+<td><code>/previas/c/formula</code> e <code>/formula/editar</code></td>
+<td>R3, M1, D1</td>
+</tr>
+<tr>
+<td>Formatos e detalhe</td>
+<td><code>/previas/c/formato</code> e <code>/formato/formato-exemplo-1</code></td>
+<td>O2, O3, O4</td>
+</tr>
+<tr>
+<td>Roteiros e ideias</td>
+<td><code>/previas/c/roteiro</code> e <code>/roteiro/novo</code></td>
+<td>I1, F1</td>
+</tr>
+<tr>
+<td>Revisar roteiro</td>
+<td><code>/previas/c/roteiro/video-exemplo-7</code></td>
+<td>I1, V1</td>
+</tr>
+<tr>
+<td>Vídeos para postar</td>
+<td><code>/previas/c/publicar</code></td>
+<td>F1, V1</td>
+</tr>
+<tr>
+<td>Revisar vídeo</td>
+<td><code>/previas/c/publicar/video-exemplo-16</code></td>
+<td>V1, V2</td>
+</tr>
+<tr>
+<td>Canais e configuração</td>
+<td><code>/previas/c/canais</code> e <code>/canais/canal-exemplo-1</code></td>
+<td>N3, C1, C2, H1</td>
+</tr>
+</tbody>
+</table>
+<p>As rotas abreviadas mantêm o prefixo <code>/previas/c</code>. Incluí vazio, erro recuperável, validação e confirmações. N2 é tratado pela barra compartilhada em todas as telas. <strong>O1 permanece: aplicar formato só é simulado.</strong></p>
+<h2>Tarefas: hoje × versão C</h2>
+<p>Contagens de “hoje” vêm de PROBLEMAS.md; não executei o painel original.</p>
+<table>
+<thead>
+<tr>
+<th>Tarefa</th>
+<th>Telas e toques hoje</th>
+<th>Telas e toques na versão C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retomar assunto e examinar formato</td>
+<td>4 telas, 4 ações; pula a receita</td>
+<td>5 telas, 4 ações; inclui Fórmula</td>
+</tr>
+<tr>
+<td>Saber a etapa atual</td>
+<td>1 ação para encontrar a barra</td>
+<td>0 ações; barra em todas as telas</td>
+</tr>
+<tr>
+<td>Abrir vídeo para postar</td>
+<td>2 ações</td>
+<td>2 ações; pelo menu recolhido do celular, 3</td>
+</tr>
+<tr>
+<td>Trocar canal</td>
+<td>1 seleção, restrita à área</td>
+<td>1 seleção; acompanha as próximas áreas</td>
+</tr>
+</tbody>
+</table>
+<p>Começar um assunto novo valida e confere o texto, mas não executa estudo. Depois é necessário escolher um exemplo existente.</p>
+<h2>Contras desta versão</h2>
+<ul>
+<li>Fórmula acrescenta uma tela ao percurso. A proposta reduz a informação simultânea, mas não encurta todas as tarefas.</li>
+<li>Paginação e menu recolhido acrescentam ações.</li>
+<li><strong>Esforço M:</strong> integrar navegação, filtros e canal compartilhado nas telas reais.</li>
+<li><strong>Esforço G, fora do escopo:</strong> aplicar formatos e integrar geração/publicação reais.</li>
+</ul>
+<h2>O que inventei</h2>
+<p>Entrada por tarefas, agrupamentos, paginação e confirmações. Escolhas e alterações ficam somente em memória. Os dados iniciais vêm da base compartilhada; entradas novas recebem <code>[exemplo]</code>.</p>
+<h2>O que não fiz</h2>
+<p>Não conectei backend ou YouTube, gerei estudos/vídeos, publiquei ou recriei todo o conteúdo das telas.</p>
+<p>Conferi <strong>40/40 capturas</strong>, sem sobra lateral, rede externa, erro de console ou alvos menores que 44 px. Olhei início, lista, detalhe e diálogo nos dois tamanhos. Os testes de percurso passaram.</p>
+<p>Não rodei build. TypeScript não aponta erro na pasta C, mas falha por um erro na versão B. A documentação auxiliar de design já estava defasada; sua atualização com <code>document</code> ficou de fora.</p></div>
+<h3>Telas (clique na foto para abrir a tela de verdade)</h3>
+<div class="par"><figure class="pc"><a href="app/previas/c" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-01-inicio.webp" alt="O que fazer · computador"></a><figcaption>O que fazer · computador</figcaption></figure><figure class="cel"><a href="app/previas/c" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-01-inicio.webp" alt="O que fazer · celular"></a><figcaption>O que fazer · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/nicho" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-02-nichos.webp" alt="Lista de assuntos · computador"></a><figcaption>Lista de assuntos · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/nicho" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-02-nichos.webp" alt="Lista de assuntos · celular"></a><figcaption>Lista de assuntos · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/nicho/estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-03-estudo.webp" alt="Assunto escolhido · computador"></a><figcaption>Assunto escolhido · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/nicho/estudo-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-03-estudo.webp" alt="Assunto escolhido · celular"></a><figcaption>Assunto escolhido · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/nicho/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-04-novo.webp" alt="Novo assunto · computador"></a><figcaption>Novo assunto · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/nicho/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-04-novo.webp" alt="Novo assunto · celular"></a><figcaption>Novo assunto · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/formula" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-05-formula.webp" alt="Fórmula · computador"></a><figcaption>Fórmula · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/formula" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-05-formula.webp" alt="Fórmula · celular"></a><figcaption>Fórmula · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/formula/editar" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-06-editar.webp" alt="Editar fórmula · computador"></a><figcaption>Editar fórmula · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/formula/editar" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-06-editar.webp" alt="Editar fórmula · celular"></a><figcaption>Editar fórmula · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/formato" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-07-formatos.webp" alt="Formatos · computador"></a><figcaption>Formatos · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/formato" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-07-formatos.webp" alt="Formatos · celular"></a><figcaption>Formatos · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/formato/formato-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-08-formato.webp" alt="Detalhe do formato · computador"></a><figcaption>Detalhe do formato · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/formato/formato-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-08-formato.webp" alt="Detalhe do formato · celular"></a><figcaption>Detalhe do formato · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/roteiro" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-09-roteiros.webp" alt="Roteiros · computador"></a><figcaption>Roteiros · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/roteiro" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-09-roteiros.webp" alt="Roteiros · celular"></a><figcaption>Roteiros · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/roteiro/video-exemplo-7" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-10-roteiro.webp" alt="Revisar roteiro · computador"></a><figcaption>Revisar roteiro · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/roteiro/video-exemplo-7" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-10-roteiro.webp" alt="Revisar roteiro · celular"></a><figcaption>Revisar roteiro · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/roteiro/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-11-ideia.webp" alt="Nova ideia · computador"></a><figcaption>Nova ideia · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/roteiro/novo" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-11-ideia.webp" alt="Nova ideia · celular"></a><figcaption>Nova ideia · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/publicar" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-12-publicar.webp" alt="Vídeos para postar · computador"></a><figcaption>Vídeos para postar · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/publicar" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-12-publicar.webp" alt="Vídeos para postar · celular"></a><figcaption>Vídeos para postar · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/publicar/video-exemplo-16" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-13-video.webp" alt="Revisar vídeo · computador"></a><figcaption>Revisar vídeo · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/publicar/video-exemplo-16" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-13-video.webp" alt="Revisar vídeo · celular"></a><figcaption>Revisar vídeo · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/canais" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-14-canais.webp" alt="Canais · computador"></a><figcaption>Canais · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/canais" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-14-canais.webp" alt="Canais · celular"></a><figcaption>Canais · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/canais/canal-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-15-canal.webp" alt="Editar canal · computador"></a><figcaption>Editar canal · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/canais/canal-exemplo-1" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-15-canal.webp" alt="Editar canal · celular"></a><figcaption>Editar canal · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/publicar?cenario=vazio" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-16-vazio.webp" alt="Sem dados · computador"></a><figcaption>Sem dados · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/publicar?cenario=vazio" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-16-vazio.webp" alt="Sem dados · celular"></a><figcaption>Sem dados · celular · cortada</figcaption></figure></div>
+<div class="par"><figure class="pc"><a href="app/previas/c/nicho?cenario=erro" target="_blank" rel="noopener"><img loading="lazy" src="img/c-pc-17-erro.webp" alt="Erro · computador"></a><figcaption>Erro · computador</figcaption></figure><figure class="cel"><a href="app/previas/c/nicho?cenario=erro" target="_blank" rel="noopener"><img loading="lazy" src="img/c-celular-17-erro.webp" alt="Erro · celular"></a><figcaption>Erro · celular · cortada</figcaption></figure></div></section>
+<section id="hoje"><h2>Como está hoje</h2>
+<details><summary>Problemas de hoje, numerados</summary><div class="texto"><h1>Problemas de hoje · Fazenda · painel dos canais</h1>
+<h2>Quem usa e para quê</h2>
+<p>O dono e amigos leigos, cada um com os próprios canais de vídeos sem rosto no YouTube, que vendem um ebook.</p>
+<ul>
+<li><strong>T1.</strong> “Quero começar um canal: escolher o assunto, entender a fórmula e chegar ao formato.”</li>
+<li><strong>T2.</strong> “Quero saber onde estou e o que faço agora.”</li>
+<li><strong>T3.</strong> “Quero achar os vídeos prontos para revisar e postar.”</li>
+<li><strong>T4.</strong> “Quero trabalhar em outro dos meus canais.”</li>
+</ul>
+<p>Avaliação somente leitura das 20 fotos, das medidas fornecidas e do código das dez telas. Os problemas abaixo se limitam à navegação, aos nomes, à orientação e à identificação do canal. A falta de aplicação do formato aparece como impedimento preexistente, sem propor implementação fora do escopo.</p>
+<h2>Fluxo de hoje</h2>
+<p><strong>Contagem:</strong> links e botões acionados; digitação, foco nos campos, espera e rolagem ficam separados. As quantidades são caminhos mínimos reconstruídos das fotos e do código, sem execução no navegador. Telas incluem a origem quando indicada.</p>
+<table>
+<thead>
+<tr>
+<th>Tarefa</th>
+<th>Caminho atual</th>
+<th>Telas e ações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T1 — Começar pelo nicho</strong></td>
+<td>Fila → Estudos → criar estudo → relatório → Formatos → abrir uma amostra.</td>
+<td><strong>4 telas contando a Fila; 4 acionamentos:</strong> Estudos, Estudar este nicho, Formatos e abrir formato. Exige digitar o nicho e aguardar o processamento. Esse atalho não passa pela receita.</td>
+</tr>
+<tr>
+<td><strong>T1 — Retomar estudo existente</strong></td>
+<td>Fila → Estudos → abrir estudo → Formatos → abrir amostra.</td>
+<td><strong>4 telas; 4 acionamentos.</strong> Se Formatos abrir outro nicho, é necessário mudar o seletor. Não há ação para aplicar o formato escolhido ao canal.</td>
+</tr>
+<tr>
+<td><strong>T2 — Descobrir a etapa</strong></td>
+<td>Abrir Formatos para encontrar a barra das cinco etapas.</td>
+<td><strong>1 acionamento e 1 tela de destino</strong> a partir de outra seção. Ao seguir um link da barra para outra seção, ela desaparece. Não existe percurso completo de orientação entre as cinco etapas.</td>
+</tr>
+<tr>
+<td><strong>T3 — Achar um vídeo para postar</strong></td>
+<td>Outra seção → Fila → cartão em Revisão de vídeo.</td>
+<td><strong>2 acionamentos e 2 telas de destino.</strong> Já estando na Fila: nenhum acionamento para consultar o quadro e <strong>1</strong> para abrir o vídeo. A rolagem depende das colunas e dos vídeos presentes.</td>
+</tr>
+<tr>
+<td><strong>T4 — Mudar o canal localmente</strong></td>
+<td>Usar o seletor na Fila ou na tela de ideias.</td>
+<td><strong>Sem trocar de tela; 1 mudança de seleção.</strong> A quantidade física de toques depende do seletor nativo e não foi medida.</td>
+</tr>
+<tr>
+<td><strong>T4 — Abrir configuração de outro canal</strong></td>
+<td>Canais → nome do canal ou Abrir. Do detalhe: Todos os canais → outro canal.</td>
+<td><strong>2 acionamentos e 2 telas de destino.</strong> Isso abre outra configuração; não estabelece um canal de trabalho para o painel inteiro.</td>
+</tr>
+</tbody>
+</table>
+<p>Evidências: <code>CascaPainel.vue:13</code>, <code>NovoEstudo.vue:57</code>, <code>Estudos.vue:441</code>, <code>Formatos.vue:158</code>, <code>Formatos.vue:371</code>, <code>Fila.vue:129</code>, <code>Canais.vue:94</code> e <code>CanalDetalhe.vue:81</code>, todos dentro de <code>painel/src/</code>.</p>
+<h2>Problemas por tela</h2>
+<p>Os nomes antigos aparecem apenas para identificar o que existe hoje. As referências de fotos pertencem à pasta <code>atual/olhar/</code>; as referências de código partem da pasta do projeto.</p>
+<h3>Navegação compartilhada — N</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N1</td>
+<td>P1</td>
+<td>O menu começa pelo fim e exige traduzir nomes para entender o trabalho. A ordem atual não apresenta Nicho → Fórmula → Formato → Roteiro → Publicar.</td>
+<td><code>pc-01-fila.jpg</code> e <code>celular-01-fila.jpg</code>: Fila, Estudos, Formatos, Moldes, Pautas, Canais. Ordem definida em <code>painel/src/componentes/CascaPainel.vue:13</code>.</td>
+<td>T1, T2, T3</td>
+</tr>
+<tr>
+<td>N2</td>
+<td>P1</td>
+<td>A orientação das cinco etapas existe somente em Formatos. A pessoa perde essa referência ao avançar ou voltar.</td>
+<td>Barra visível em <code>pc-04-formato-aberto.jpg</code>; ausente nas outras nove telas fotografadas. Uso em <code>painel/src/telas/Formatos.vue:158</code>; a estrutura compartilhada apenas renderiza a tela em <code>painel/src/componentes/CascaPainel.vue:110</code>.</td>
+<td>T1, T2</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>P2</td>
+<td>Canais aparece no mesmo grupo e com o mesmo tratamento das atividades de produção. Não fica claro que é configuração das contas do YouTube.</td>
+<td><code>pc-09-canais.jpg</code>: item junto das demais áreas; a própria página trata de identidade, conexão e importação. Grupo único em <code>painel/src/componentes/CascaPainel.vue:72</code>.</td>
+<td>T1, T4</td>
+</tr>
+</tbody>
+</table>
+<h3>01 · Fila — F</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>P1</td>
+<td>O destino chamado Publicar mistura revisão de roteiro com revisão de vídeo e demais estados de produção. Renomear Fila isoladamente manteria essa ambiguidade.</td>
+<td><code>pc-01-fila.jpg</code> e <code>celular-01-fila.jpg</code>: as duas revisões lado a lado ou empilhadas. <code>painel/src/telas/Fila.vue:8</code> inclui desde ideia criada até publicado; <code>painel/src/componentes/EtapasFluxo.vue:19</code> aponta Publicar para essa tela.</td>
+<td>T2, T3</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>P2</td>
+<td>A entrada do painel não oferece um começo para quem ainda não tem vídeos. O vazio informa ausência, sem encaminhar para Nicho ou Roteiro.</td>
+<td><code>painel/src/telas/Fila.vue:105</code>: estado vazio “Nenhum vídeo na fila.”, sem ação contextual. A foto mostra apenas o vazio de uma coluna, não o vazio total.</td>
+<td>T1, T2</td>
+</tr>
+</tbody>
+</table>
+<h3>02 · Estudos — E</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>P1</td>
+<td>A continuação do estudo conduz à receita antiga, sem caminho contextual para Formatos. Para chegar à produção visual, a pessoa precisa descobrir o item no menu.</td>
+<td><code>painel/src/telas/Estudos.vue:326</code> cria a receita e navega para <code>/moldes/:id</code>; <code>:370</code> encaminha as ações da trilha para criar ou abrir essa receita.</td>
+<td>T1, T2</td>
+</tr>
+</tbody>
+</table>
+<h3>03 · Relatório do estudo — R</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td>P2</td>
+<td>A trilha interna apresenta outra sequência — Coletar → Medir → Decidir → Molde — sem situá-la nas cinco etapas do canal. O usuário precisa relacionar dois mapas diferentes.</td>
+<td><code>pc-03-relatorio-estudo.jpg</code> e <code>celular-03-relatorio-estudo.jpg</code>: trilha de quatro passos. Estrutura em <code>painel/src/componentes/TrilhaEstudo.vue:18</code>.</td>
+<td>T1, T2</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>P2</td>
+<td>No celular, abrir um estudo mantém a lista de estudos antes do relatório. A pessoa precisa atravessar novamente a lista para chegar ao trabalho que acabou de abrir.</td>
+<td><code>celular-03-relatorio-estudo.jpg</code>: “Estudos feitos” antecede o relatório selecionado. <code>atual/medidas.json</code>: página com <strong>4,73 alturas de tela</strong> no celular.</td>
+<td>T1, T2</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>P1</td>
+<td>O link Fórmula da barra abre o relatório, mas não oferece acesso direto à receita existente. A etapa fica repartida entre relatório e uma seção com outro nome.</td>
+<td><code>painel/src/componentes/EtapasFluxo.vue:15</code>: Fórmula aponta para <code>/estudos/:id</code>, ou <code>/estudos</code>. A receita está em <code>/moldes/:id</code>, conforme <code>painel/src/roteador.ts:34</code>.</td>
+<td>T1, T2</td>
+</tr>
+</tbody>
+</table>
+<h3>04 · Formatos — O</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O1</td>
+<td>P0</td>
+<td>A tarefa literal de escolher e aplicar um formato ao canal não pode ser concluída. A tela permite examinar e gerar amostras, mas a aplicação está anunciada para depois. É um impedimento preexistente; mudar a navegação não o resolve.</td>
+<td><code>pc-04-formato-aberto.jpg</code>: aviso no detalhe aberto. <code>painel/src/telas/Formatos.vue:371</code>: “Em breve: usar este formato como base e adaptar ao seu canal.”</td>
+<td>T1</td>
+</tr>
+<tr>
+<td>O2</td>
+<td>P1</td>
+<td>A barra trata Nicho e Fórmula como etapas feitas apenas porque Formato está aberto. A apresentação pode indicar avanço sem confirmar que a fórmula foi definida.</td>
+<td><code>pc-04-formato-aberto.jpg</code>: etapas anteriores com marcação verde. <code>painel/src/componentes/EtapasFluxo.vue:29</code> aplica <code>feita</code> pela posição; <code>painel/src/telas/Formatos.vue:158</code> fixa a etapa atual em Formato.</td>
+<td>T2</td>
+</tr>
+<tr>
+<td>O3</td>
+<td>P2</td>
+<td>No celular, quatro etapas ficam apenas com números. Quem ainda está aprendendo o fluxo não consegue reconhecer visualmente os destinos.</td>
+<td><code>celular-04-formato-aberto.jpg</code>: apenas Formato tem nome visível. <code>painel/src/estilos.css:3673</code> oculta visualmente os outros nomes, preservando-os para leitura assistiva.</td>
+<td>T1, T2</td>
+</tr>
+<tr>
+<td>O4</td>
+<td>P1</td>
+<td>Abrir Formatos pelo menu não preserva o estudo em que a pessoa estava. Sem o parâmetro, a tela escolhe o primeiro estudo utilizável, que pode ser outro.</td>
+<td><code>painel/src/componentes/CascaPainel.vue:16</code>: destino <code>/formatos</code> sem estudo. <code>painel/src/telas/Formatos.vue:35</code> usa o primeiro estudo utilizável quando não encontra o solicitado.</td>
+<td>T1, T2</td>
+</tr>
+</tbody>
+</table>
+<h3>05 · Lista de receitas, hoje “Moldes” — M</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>P1</td>
+<td>O nome e a explicação reforçam a confusão entre fórmula e formato. A pessoa encontra duas áreas que parecem responder como fazer o vídeo.</td>
+<td><code>pc-05-lista-receitas.jpg</code> e <code>celular-05-lista-receitas.jpg</code>: título antigo e descrição “O jeito de fazer um formato de vídeo”. Texto em <code>painel/src/telas/Moldes.vue:616</code>.</td>
+<td>T1, T2</td>
+</tr>
+</tbody>
+</table>
+<h3>06 · Detalhe da receita — D</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>P1</td>
+<td>A continuação da receita ativa pula Formato e manda diretamente para as ideias. O caminho oferecido pela tela contradiz a sequência desejada.</td>
+<td><code>painel/src/telas/Moldes.vue:936</code> orienta criar uma ideia; <code>:951</code> oferece link direto para <code>/pautas</code>. Não há passagem por <code>/formatos</code> nessa continuação.</td>
+<td>T1, T2</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>P1</td>
+<td>A receita pode ser ativada em um canal, mas o link seguinte não leva esse canal. A tela de ideias pode abrir no primeiro canal da lista.</td>
+<td><code>painel/src/telas/Moldes.vue:951</code>: link sem contexto de canal. <code>painel/src/telas/Pautas.vue:30</code>: seleção automática do primeiro canal.</td>
+<td>T2, T4</td>
+</tr>
+</tbody>
+</table>
+<h3>07 · Ideias, hoje “Pautas e sugestões” — I</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>P1</td>
+<td>A entrada Roteiro abre ideias, enquanto a revisão do texto fica acessível pela Fila. As ideias cadastradas não oferecem ligação para o vídeo ou roteiro correspondente; depois de salvar, falta uma continuação explícita.</td>
+<td><code>pc-07-ideias-validacao.jpg</code>: lista de ideias sem ação de abertura. <code>painel/src/componentes/EtapasFluxo.vue:18</code> aponta Roteiro para <code>/pautas</code>; <code>painel/src/telas/Pautas.vue:111</code> salva e recarrega listas; <code>:227</code> renderiza itens sem links. A revisão está em <code>painel/src/telas/Video.vue:170</code>.</td>
+<td>T2</td>
+</tr>
+</tbody>
+</table>
+<h3>08 · Revisão do vídeo — V</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1</td>
+<td>P1</td>
+<td>Ao abrir um vídeo, nenhum item do menu permanece ativo e a barra das etapas não aparece. A pessoa perde a indicação de que está em Roteiro ou Publicar.</td>
+<td><code>pc-08-video-revisao.jpg</code> e <code>celular-08-video-revisao.jpg</code>: menu sem seleção e cabeçalho genérico de vídeos. <code>painel/src/componentes/CascaPainel.vue:27</code> considera Fila ativa somente na raiz.</td>
+<td>T2, T3</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>P1</td>
+<td>O canal de destino aparece como identificador técnico. Antes de aprovar a publicação, falta um nome reconhecível para confirmar em qual canal o vídeo será publicado.</td>
+<td><code>pc-08-video-revisao.jpg</code> e <code>celular-08-video-revisao.jpg</code>: bloco Canal com código longo. <code>painel/src/telas/Video.vue:160</code> imprime <code>video.canalId</code>.</td>
+<td>T3, T4</td>
+</tr>
+</tbody>
+</table>
+<h3>09 · Canais — C</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>P2</td>
+<td>No celular, a tabela deixa conexão, receita e botão Abrir fora da área inicialmente visível. O nome do canal também abre o detalhe, mas essa alternativa não torna as informações escondidas fáceis de descobrir.</td>
+<td><code>celular-09-canais.jpg</code>: tabela cortada durante a coluna Formatos; <code>pc-09-canais.jpg</code> mostra as colunas restantes. Contêiner rolável em <code>painel/src/telas/Canais.vue:78</code>; link no nome em <code>:94</code>.</td>
+<td>T4</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>P1</td>
+<td>Canais funciona como lista de configurações, sem estabelecer um canal de trabalho compartilhado. A Fila começa com todos; a tela de ideias escolhe o primeiro. A pessoa precisa selecionar novamente ao mudar de área.</td>
+<td><code>painel/src/telas/Fila.vue:35</code> inicia filtro vazio; <code>:94</code> apresenta Todos os canais. <code>painel/src/telas/Pautas.vue:30</code> seleciona o primeiro. A estrutura compartilhada mostra autor e saída, sem seletor, em <code>painel/src/componentes/CascaPainel.vue:97</code>.</td>
+<td>T4</td>
+</tr>
+</tbody>
+</table>
+<h3>10 · Detalhe do canal — H</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Gravidade</th>
+<th>Problema</th>
+<th>Evidência</th>
+<th>Tarefa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>P2</td>
+<td>Depois de abrir um canal, não há caminho contextual para trabalhar nos seus roteiros ou vídeos pendentes. A pessoa volta ao menu geral e precisa restabelecer o canal na área escolhida.</td>
+<td><code>pc-10-canal-detalhe.jpg</code> e <code>celular-10-canal-detalhe.jpg</code>: configuração, conexão e relatório. <code>painel/src/telas/CanalDetalhe.vue:81</code> oferece retorno à lista; os links para vídeos em <code>:166</code> dependem do relatório de resultados, sem acesso à fila pendente daquele canal.</td>
+<td>T3, T4</td>
+</tr>
+</tbody>
+</table>
+<h2>Totais</h2>
+<table>
+<thead>
+<tr>
+<th>Gravidade</th>
+<th style="text-align: right;">Quantidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0 — impede a tarefa</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>P1 — atrapalha muito</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>P2 — atrapalha</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>P3 — acabamento</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>22</strong></td>
+</tr>
+</tbody>
+</table>
+<p>O P0 registra uma limitação funcional existente de Formatos. Não implica ampliar esta prévia para backend ou motor de vídeo.</p>
+<h2>Não coberto</h2>
+<ul>
+<li>Não executei a aplicação nem percorri os fluxos no navegador. As contagens são reconstruções das fotos e do código, condicionadas ao sucesso das operações.</li>
+<li>As fotos de celular das páginas longas terminam antes do fim. Os controles finais dessas páginas foram conferidos no código e, quando presentes, nas fotos do computador.</li>
+<li>Não há foto da revisão de roteiro aberta, da receita ativa, do painel totalmente vazio, de carregamento ou de falha de rede. As observações sobre esses estados foram identificadas como evidência de código.</li>
+<li>Não conferi troca real entre vários canais, persistência após recarregar, permissões entre amigos, conexão ao YouTube ou publicação.</li>
+<li>Não testei teclado, leitor de tela, contraste ou zoom.</li>
+<li>As medidas fornecidas registram zero sobra de largura da página e nenhum erro de console nas capturas. Isso não comprova ausência de rolagem interna nem funcionamento completo.</li>
+<li>Os números de alvos menores que 44 px são agregados por página. Sem identificar os controles, não atribuí esse problema ao menu ou à barra das etapas.</li>
+<li>Não tratei a posição do menu no meio de algumas fotos longas como defeito reproduzido: o código declara comportamento preso ao topo.</li>
+<li>Não rodei scripts da skill, detector, testes ou instalações. Não li arquivos <code>.env</code> e não alterei arquivos.</li>
+</ul></div></details>
+<p class="nota">As fotos de hoje não foram publicadas porque podem mostrar dados reais; elas estão no disco, na pasta da prévia.</p></section>
+<section id="referencias"><h2>Referências</h2><p class="nota">[L] = a página foi aberta e lida. [B] = só o resumo da busca.</p>
+<div class="texto"><h1>Referências · Fazenda — painel dos canais</h1>
+<p>Pesquisa em 06/11/2026. <strong>[L]</strong> = página aberta e lida; <strong>[B]</strong> = apenas resumo da busca. As decisões abaixo usam fontes <strong>[L]</strong>.</p>
+<p>Nenhum arquivo foi alterado. Li <code>app/DESIGN.md</code>. <code>PROBLEMAS.md</code> não foi encontrado no caminho informado. Não testei as plataformas com conta nem validei a compreensão com usuários leigos.</p>
+<h2>Por tarefa</h2>
+<h3>T1 — Começar um canal: escolher o nicho e chegar ao formato</h3>
+<p><strong>Padrão comum</strong></p>
+<p>Nas duas ferramentas de pesquisa consultadas, o assunto pesquisado pode alimentar a criação:</p>
+<ul>
+<li><strong>A página diz:</strong> no vidIQ, a pesquisa de vídeos acima do desempenho habitual oferece uma ação que encaminha o resultado para a ferramenta de criação de ideias. <a href="https://support.vidiq.com/en/articles/9660010-outliers">vidIQ — pesquisa de vencedores, L</a>.</li>
+<li><strong>A página diz:</strong> no TubeBuddy, a pessoa pesquisa palavras relacionadas ao assunto do canal, salva resultados no planejador e acrescenta anotações. <a href="https://www.tubebuddy.com/tools/video-topic-planner">TubeBuddy — planejamento de ideias, L</a>.</li>
+</ul>
+<p>Isso sustenta <strong>pesquisar → aproveitar o resultado na próxima tarefa</strong>. Não comprova que a maioria do mercado use Nicho → Fórmula → Formato.</p>
+<p><strong>Para leigo</strong></p>
+<p><strong>A página diz:</strong> o Canva permite selecionar uma opção, visualizar uma prévia e então iniciar a personalização. <a href="https://www.canva.com/help/creating-and-editing-videos/">Canva — criação de vídeos, L</a>.</p>
+<p><strong>Eu infiro para a Fazenda:</strong> manter <strong>Nicho → Fórmula → Formato</strong>, com links que digam o destino: <strong>“Continuar para Fórmula”</strong> e <strong>“Escolher formato”</strong>. Em Fórmula, reunir os acessos ao relatório e à receita existente. Em Formato, aproveitar as amostras já prontas.</p>
+<p>A distinção entre <strong>Fórmula</strong>, como regras do conteúdo, e <strong>Formato</strong>, como produção visual, vem do dono. Não encontrei essa mesma separação documentada nas plataformas pesquisadas.</p>
+<h3>T2 — Saber em que etapa está e o que fazer em seguida</h3>
+<p><strong>Padrão comum</strong></p>
+<p>As três documentações de criação/publicação comparáveis descrevem ações em sequência:</p>
+<ul>
+<li><strong>A página diz:</strong> o YouTube organiza o envio em seções como detalhes, elementos do vídeo, verificações e visibilidade. <a href="https://support.google.com/youtube/answer/57407?co=GENIE.Platform%3DDesktop&amp;hl=pt-BR">YouTube Studio — envio pelo computador, L</a>.</li>
+<li><strong>A página diz:</strong> o guia do CapCut descreve adicionar material, editar e exportar. <a href="https://www.capcut.com/resource/capcut-tutorial-for-beginners">CapCut — guia para iniciantes, L</a>.</li>
+<li><strong>A página diz:</strong> o fluxo simplificado do Canva no celular passa pela seleção de mídia, prévia e escolha entre continuar editando ou baixar. A disponibilidade varia conforme a versão do aplicativo. <a href="https://www.canva.com/help/creating-and-editing-videos/">Canva — criação de vídeos, L</a>.</li>
+</ul>
+<p>A sequência está documentada; <strong>uma barra persistente de etapas em todas as telas não foi comprovada</strong>.</p>
+<p><strong>Para leigo</strong></p>
+<p><strong>A página diz:</strong> o Notion oferece uma trilha de navegação que mostra a posição da página na estrutura e permite acessar suas páginas superiores. <a href="https://www.notion.com/pt/help/intro-to-workspaces">Notion — introdução aos espaços de trabalho, L</a>.</p>
+<p><strong>Eu infiro para a Fazenda:</strong> mostrar <strong>Nicho → Fórmula → Formato → Roteiro → Publicar</strong> em todas as telas dessas etapas, destacando a etapa aberta. Usar os mesmos nomes no menu e na barra.</p>
+<p>A etapa aberta indica <strong>localização</strong>, não conclusão. Um canal pode ter vídeos em momentos diferentes; marcar uma etapa inteira como concluída exigiria uma regra do produto que esta pesquisa não estabelece.</p>
+<h3>T3 — Achar os vídeos que estão para postar</h3>
+<p><strong>Padrão comum</strong></p>
+<p>Nos dois produtos com organização de publicação consultada, existe um lugar para reencontrar conteúdo e uma ação explícita para publicar:</p>
+<ul>
+<li><strong>A página diz:</strong> no YouTube Studio, a pessoa entra em <strong>Conteúdo</strong>, escolhe o vídeo e altera sua publicação ou programação. <a href="https://support.google.com/youtube/answer/1270709?hl=pt-BR">YouTube — programar publicação, L</a>.</li>
+<li><strong>A página diz:</strong> no Canva, é possível programar pelo planejador de conteúdo ou pelo editor, escolhendo data, horário e canal. No celular, a programação é feita pelo editor. <a href="https://www.canva.com/en_au/help/content-planner/">Canva — planejamento e programação, L</a>.</li>
+</ul>
+<p><strong>Para leigo</strong></p>
+<p>O caminho mais direto documentado é <strong>Conteúdo → vídeo → publicação</strong>, no YouTube. <a href="https://support.google.com/youtube/answer/1270709?hl=pt-BR">YouTube — programar publicação, L</a>.</p>
+<p><strong>Eu infiro para a Fazenda:</strong> usar <strong>Publicar</strong> como destino direto no menu, com a explicação <strong>“Revisar vídeos prontos e postar”</strong>. A revisão do texto deve ser acessível por <strong>Roteiro</strong>. Apenas trocar o nome da tela atual não resolve a confusão se ela continuar misturando essas duas tarefas sem caminhos distintos.</p>
+<p>Não há evidência aqui para impor um calendário ou acrescentar programação ao produto.</p>
+<h3>T4 — Trocar entre os próprios canais</h3>
+<p><strong>Padrão comum</strong></p>
+<p>Nas três plataformas comparáveis, a troca acontece por um seletor de contexto:</p>
+<ul>
+<li><strong>A página diz:</strong> no YouTube, o menu da conta lista as identidades administradas; nome e ícone permitem confirmar o canal ativo. <a href="https://support.google.com/youtube/answer/3046356?co=GENIE.Platform%3DDesktop&amp;hl=pt-BR">YouTube — alternar canais, L</a>.</li>
+<li><strong>A página diz:</strong> no vidIQ, canais adicionados aparecem no menu associado ao avatar; clicar em um deles troca o canal de trabalho. <a href="https://support.vidiq.com/en/articles/9472168-how-to-add-additional-channels-to-vidiq">vidIQ — canais adicionais, L</a>.</li>
+<li><strong>A página diz:</strong> no Notion, clicar no nome do espaço abre a lista para escolher outro. É uma referência de troca de contexto, não de canais do YouTube. <a href="https://www.notion.com/pt/help/create-delete-and-switch-workspaces">Notion — alternar espaços, L</a>.</li>
+</ul>
+<p><strong>Para leigo</strong></p>
+<p>O mecanismo mais simples encontrado foi <strong>nome atual → lista → escolha</strong>, descrito pelo Notion. <a href="https://www.notion.com/pt/help/create-delete-and-switch-workspaces">Notion — alternar espaços, L</a>.</p>
+<p><strong>Eu infiro para a Fazenda:</strong> exibir <strong>“Canal: Penas &amp; Cia [exemplo]”</strong>, com <strong>“Trocar canal”</strong>, junto da navegação no computador e no topo do celular. Manter <strong>“Canais do YouTube”</strong> na área de configuração, fora das cinco etapas. O vidIQ também documenta canais e configurações separados das ferramentas de trabalho. <a href="https://support.vidiq.com/en/articles/9820526-navigating-your-new-dashboard">vidIQ — navegação do painel, L</a>.</p>
+<h2>Decisão → fonte</h2>
+<p>As decisões são adaptações para a Fazenda. <strong>[L] qualifica a leitura da fonte, não uma validação do desenho proposto.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Decisão de desenho que dá para copiar</th>
+<th>Plataforma</th>
+<th>Link</th>
+<th>[L] ou [B]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Levar o resultado da pesquisa diretamente à próxima tarefa</td>
+<td>vidIQ</td>
+<td><a href="https://support.vidiq.com/en/articles/9660010-outliers">Pesquisa de vencedores</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Preservar pesquisa e anotações ao desenvolver uma ideia</td>
+<td>TubeBuddy</td>
+<td><a href="https://www.tubebuddy.com/tools/video-topic-planner">Planejamento de ideias</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Mostrar amostra antes de escolher o formato</td>
+<td>Canva</td>
+<td><a href="https://www.canva.com/help/creating-and-editing-videos/">Criação de vídeos</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Dar nomes concretos às ações do caminho</td>
+<td>CapCut</td>
+<td><a href="https://www.capcut.com/resource/capcut-tutorial-for-beginners">Guia para iniciantes</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Mostrar localização e permitir voltar pela navegação</td>
+<td>Notion</td>
+<td><a href="https://www.notion.com/pt/help/intro-to-workspaces">Trilha de navegação</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Ter um destino para reencontrar vídeos e publicar</td>
+<td>YouTube Studio</td>
+<td><a href="https://support.google.com/youtube/answer/1270709?hl=pt-BR">Programar publicação</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Separar roteiro de publicação na navegação</td>
+<td>vidIQ e YouTube Studio</td>
+<td><a href="https://support.vidiq.com/en/articles/9829101-generate">Ferramenta de roteiro</a>, <a href="https://support.google.com/youtube/answer/1270709?hl=pt-BR">publicação</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Trocar o canal por uma lista dos canais disponíveis</td>
+<td>vidIQ</td>
+<td><a href="https://support.vidiq.com/en/articles/9472168-how-to-add-additional-channels-to-vidiq">Canais adicionais</a></td>
+<td>[L]</td>
+</tr>
+<tr>
+<td>Identificar o canal ativo e deixar configuração fora das etapas</td>
+<td>YouTube e vidIQ</td>
+<td><a href="https://support.google.com/youtube/answer/3046356?co=GENIE.Platform%3DDesktop&amp;hl=pt-BR">Identificação do canal</a>, <a href="https://support.vidiq.com/en/articles/9820526-navigating-your-new-dashboard">configurações</a></td>
+<td>[L]</td>
+</tr>
+</tbody>
+</table>
+<h2>Nomes de ação usados no mercado</h2>
+<p>Para manter o documento em português, os rótulos das fontes em inglês aparecem traduzidos e identificados. <strong>Essas traduções não foram conferidas na interface brasileira dos produtos.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Rótulos documentados, em português</th>
+<th>Evidência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pesquisar e guardar um assunto</td>
+<td>Explorador de palavras-chave; Adicionar ao planejador de assuntos — tradução editorial</td>
+<td><a href="https://www.tubebuddy.com/tools/video-topic-planner">TubeBuddy, L</a></td>
+</tr>
+<tr>
+<td>Passar da pesquisa para ideias</td>
+<td>Dê-me ideias; Encontrar vídeos semelhantes — tradução editorial</td>
+<td><a href="https://support.vidiq.com/en/articles/9660010-outliers">vidIQ, L</a></td>
+</tr>
+<tr>
+<td>Desenvolver o texto do vídeo</td>
+<td>Estrutura; Roteiro — tradução editorial dos nomes de seções</td>
+<td><a href="https://support.vidiq.com/en/articles/9829101-generate">vidIQ, L</a></td>
+</tr>
+<tr>
+<td>Escolher e conferir uma opção visual</td>
+<td>Personalizar este modelo; Prévia do vídeo; Ir para o editor — tradução editorial</td>
+<td><a href="https://www.canva.com/help/creating-and-editing-videos/">Canva, L</a></td>
+</tr>
+<tr>
+<td>Começar e finalizar edição</td>
+<td>Novo projeto; Exportar — tradução editorial</td>
+<td><a href="https://www.capcut.com/resource/capcut-tutorial-for-beginners">CapCut, L</a></td>
+</tr>
+<tr>
+<td>Encontrar e publicar vídeos</td>
+<td>Conteúdo; Visibilidade; Programar; Publicar — documentados em português</td>
+<td><a href="https://support.google.com/youtube/answer/1270709?hl=pt-BR">YouTube Studio, L</a></td>
+</tr>
+<tr>
+<td>Trocar canal</td>
+<td>Mudar de conta — documentado em português</td>
+<td><a href="https://support.google.com/youtube/answer/3046356?co=GENIE.Platform%3DDesktop&amp;hl=pt-BR">YouTube, L</a></td>
+</tr>
+<tr>
+<td>Administrar canais</td>
+<td>Configurações do canal; Canais — tradução editorial</td>
+<td><a href="https://support.vidiq.com/en/articles/9820526-navigating-your-new-dashboard">vidIQ, L</a></td>
+</tr>
+<tr>
+<td>Acessar configuração</td>
+<td>Configurações — documentado em português</td>
+<td><a href="https://www.notion.com/pt/help/create-delete-and-switch-workspaces">Notion, L</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Para a Fazenda, por decisão do dono:</strong> Nicho, Fórmula, Formato, Roteiro e Publicar. Os nomes encontrados no mercado ajudam a explicar as ações; não substituem essa sequência.</p>
+<h2>Não encontrado</h2>
+<ul>
+<li><strong>Fluxo idêntico às cinco etapas da Fazenda:</strong> não encontrado nas fontes consultadas.</li>
+<li><strong>Fórmula como receita separada de Formato:</strong> não encontrado com o mesmo significado do produto.</li>
+<li><strong>Notion com barra lateral nativa de cinco etapas e avanço automático:</strong> não encontrado. A documentação lida descreve organização de páginas e navegação.</li>
+<li><strong>Barra de etapas persistente em todo o painel das seis plataformas:</strong> não encontrada evidência suficiente.</li>
+<li><strong>Mesmo menu no computador e no celular:</strong> não comprovado. Canva e CapCut documentam diferenças entre dispositivos.</li>
+<li><strong>Teste que demonstre qual solução é mais compreensível para amigos leigos:</strong> não encontrado. As escolhas “Para leigo” são julgamento de desenho.</li>
+<li><strong>Permissões reais entre usuários da Fazenda, estados disponíveis e funcionamento das rotas:</strong> não conferidos no código nesta pesquisa.</li>
+<li><strong>Uso das plataformas autenticadas, imagens e vídeos demonstrativos:</strong> não testados nem inspecionados visualmente; a evidência usada foi o texto das páginas oficiais.</li>
+<li><strong><code>PROBLEMAS.md</code>:</strong> não encontrado no caminho informado.</li>
+</ul></div></section>
+</main></body></html>
